@@ -17,5 +17,4 @@ def test_modification_first_contact(app):
                                                    address="newhome",
                                                    phone="8888888888",
                                                    email="newname@newhome.local"))
-    app.return_to_home_page()
     app.session.logout()

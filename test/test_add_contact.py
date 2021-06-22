@@ -9,5 +9,4 @@ def test_add_contact(app):
                        address="home",
                        phone="9999999999",
                        email="name@home.local"))
-    app.return_to_home_page()
     app.session.logout()
