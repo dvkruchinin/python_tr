@@ -7,6 +7,6 @@ def test_add_contact(app):
     app.contact.create(Contact(first_name="fname",
                        last_name="lname",
                        address="home",
-                       phone="9999999999",
+                       mobile="9999999999",
                        email="name@home.local"))
     app.session.logout()
