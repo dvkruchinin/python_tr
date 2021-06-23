@@ -10,7 +10,13 @@ Desc:
 from model.contact import Contact
 
 
+def check_contact_count(app):
+    if app.contact.count() == 0:
+        app.contact.create(Contact(first_name="test name"))
+
+
 def test_modification_first_contact(app):
+    check_contact_count(app)
     app.contact.modification_first_contact(Contact(first_name="newfname",
                                                    last_name="newlname",
                                                    address="newhome",
@@ -19,20 +25,25 @@ def test_modification_first_contact(app):
 
 
 def test_modification_first_contact_first_name(app):
+    check_contact_count(app)
     app.contact.modification_first_contact(Contact(first_name="New first name"))
 
 
 def test_modification_first_contact_last_name(app):
+    check_contact_count(app)
     app.contact.modification_first_contact(Contact(last_name="New last name"))
 
 
 def test_modification_first_contact_address(app):
+    check_contact_count(app)
     app.contact.modification_first_contact(Contact(address="New address"))
 
 
 def test_modification_first_contact_phone(app):
+    check_contact_count(app)
     app.contact.modification_first_contact(Contact(mobile="7777777777"))
 
 
 def test_modification_first_contact_email(app):
+    check_contact_count(app)
     app.contact.modification_first_contact(Contact(email="name@newemail.local"))
