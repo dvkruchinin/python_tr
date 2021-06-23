@@ -57,7 +57,10 @@ class ContactHelper:
 
     def open_contact_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
+        # End with "/addressbook" and button "Send e-Mail" are presents
+        if not (wd.current_url.endswith("/addressbook") and len(wd.find_elements_by_xpath("//*[@id='content']/form["
+                                                                                          "2]/div[1]/input")) > 0):
+            wd.find_element_by_link_text("home").click()
 
     def count(self):
         wd = self.app.wd
