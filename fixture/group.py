@@ -7,6 +7,8 @@ Date    : 6/21/2021
 Desc:   
 """
 
+from model.group import Group
+
 
 class GroupHelper:
 
@@ -46,7 +48,7 @@ class GroupHelper:
 
     def delete_first_group(self):
         wd = self.app.wd
-        self.open_groups_page()
+        self.create_group_if_missing()
         self.select_first_group()
         # Submit deletion
         wd.find_element_by_name("delete").click()
@@ -58,7 +60,7 @@ class GroupHelper:
 
     def modification_first_group(self, new_group_data):
         wd = self.app.wd
-        self.open_groups_page()
+        self.create_group_if_missing()
         self.select_first_group()
         # Open modification form
         wd.find_element_by_name("edit").click()
@@ -71,4 +73,8 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def create_group_if_missing(self):
+        if self.count() == 0:
+            self.create(Group(name="test"))
 
