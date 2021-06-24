@@ -8,53 +8,58 @@ Desc:
 """
 
 from model.group import Group
+from random import randrange
 
 
-def test_modification_first_group(app):
+def test_modification_some_group(app):
     app.group.create_group_if_missing()
     old_groups = app.group.get_group_list()
+    index = randrange(len(old_groups))
     group = Group(name="111", header="222", footer="333")
-    group.id = old_groups[0].id
-    app.group.modification_first_group(group)
-    new_groups = app.group.get_group_list()
+    group.id = old_groups[index].id
+    app.group.modification_group_by_index(index, group)
     assert len(old_groups) == app.group.count()
-    old_groups[0] = group
+    new_groups = app.group.get_group_list()
+    old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
-def test_modification_first_group_name(app):
+def test_modification_some_group_name(app):
     app.group.create_group_if_missing()
     old_groups = app.group.get_group_list()
+    index = randrange(len(old_groups))
     group = Group(name="New group")
-    group.id = old_groups[0].id
-    app.group.modification_first_group(group)
+    group.id = old_groups[index].id
+    app.group.modification_group_by_index(index, group)
     assert len(old_groups) == app.group.count()
     new_groups = app.group.get_group_list()
-    old_groups[0] = group
+    old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
-def test_modification_first_group_header(app):
+def test_modification_some_group_header(app):
     app.group.create_group_if_missing()
     old_groups = app.group.get_group_list()
+    index = randrange(len(old_groups))
     group = Group(header="New header")
-    group.id = old_groups[0].id
-    group.name = old_groups[0].name
-    app.group.modification_first_group(group)
+    group.id = old_groups[index].id
+    group.name = old_groups[index].name
+    app.group.modification_group_by_index(index, group)
     assert len(old_groups) == app.group.count()
     new_groups = app.group.get_group_list()
-    old_groups[0] = group
+    old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
-def test_modification_first_group_footer(app):
+def test_modification_some_group_footer(app):
     app.group.create_group_if_missing()
     old_groups = app.group.get_group_list()
+    index = randrange(len(old_groups))
     group = Group(footer="New footer")
-    group.id = old_groups[0].id
-    group.name = old_groups[0].name
-    app.group.modification_first_group(group)
+    group.id = old_groups[index].id
+    group.name = old_groups[index].name
+    app.group.modification_group_by_index(index, group)
     assert len(old_groups) == app.group.count()
     new_groups = app.group.get_group_list()
-    old_groups[0] = group
+    old_groups[index] = group
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
