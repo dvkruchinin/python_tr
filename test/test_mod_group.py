@@ -39,6 +39,7 @@ def test_modification_first_group_header(app):
     old_groups = app.group.get_group_list()
     group = Group(header="New header")
     group.id = old_groups[0].id
+    group.name = old_groups[0].name
     app.group.modification_first_group(group)
     new_groups = app.group.get_group_list()
     assert len(old_groups) == len(new_groups)
@@ -51,6 +52,7 @@ def test_modification_first_group_footer(app):
     old_groups = app.group.get_group_list()
     group = Group(footer="New footer")
     group.id = old_groups[0].id
+    group.name = old_groups[0].name
     app.group.modification_first_group(group)
     new_groups = app.group.get_group_list()
     assert len(old_groups) == len(new_groups)

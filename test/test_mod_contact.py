@@ -31,6 +31,7 @@ def test_modification_first_contact_first_name(app):
     old_contacts = app.contact.get_contact_list()
     contact = Contact(first_name="New first name")
     contact.id = old_contacts[0].id
+    contact.last_name = old_contacts[0].last_name
     app.contact.modification_first_contact(contact)
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
@@ -41,8 +42,9 @@ def test_modification_first_contact_first_name(app):
 def test_modification_first_contact_last_name(app):
     app.contact.create_contact_if_missing()
     old_contacts = app.contact.get_contact_list()
-    contact = Contact(first_name="New last name")
+    contact = Contact(last_name="New last name")
     contact.id = old_contacts[0].id
+    contact.first_name = old_contacts[0].first_name
     app.contact.modification_first_contact(Contact(last_name="New last name"))
     new_contacts = app.contact.get_contact_list()
     assert len(old_contacts) == len(new_contacts)
