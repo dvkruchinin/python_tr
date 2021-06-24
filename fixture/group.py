@@ -48,7 +48,7 @@ class GroupHelper:
 
     def delete_first_group(self):
         wd = self.app.wd
-        self.create_group_if_missing()
+        self.open_groups_page()
         self.select_first_group()
         # Submit deletion
         wd.find_element_by_name("delete").click()
@@ -60,7 +60,7 @@ class GroupHelper:
 
     def modification_first_group(self, new_group_data):
         wd = self.app.wd
-        self.create_group_if_missing()
+        self.open_groups_page()
         self.select_first_group()
         # Open modification form
         wd.find_element_by_name("edit").click()
@@ -78,3 +78,12 @@ class GroupHelper:
         if self.count() == 0:
             self.create(Group(name="test"))
 
+    def get_group_list(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        groups = []
+        for element in wd.find_elements_by_css_selector("span.group"):
+            text = element.text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            groups.append(Group(name=text, id=id))
+        return groups

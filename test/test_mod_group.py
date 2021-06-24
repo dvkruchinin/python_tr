@@ -11,16 +11,48 @@ from model.group import Group
 
 
 def test_modification_first_group(app):
-    app.group.modification_first_group(Group(name="111", header="222", footer="333"))
+    app.group.create_group_if_missing()
+    old_groups = app.group.get_group_list()
+    group = Group(name="111", header="222", footer="333")
+    group.id = old_groups[0].id
+    app.group.modification_first_group(group)
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
+    old_groups[0] = group
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
 def test_modification_first_group_name(app):
-    app.group.modification_first_group(Group(name="New group"))
+    app.group.create_group_if_missing()
+    old_groups = app.group.get_group_list()
+    group = Group(name="New group")
+    group.id = old_groups[0].id
+    app.group.modification_first_group(group)
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
+    old_groups[0] = group
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
 def test_modification_first_group_header(app):
-    app.group.modification_first_group(Group(header="New header"))
+    app.group.create_group_if_missing()
+    old_groups = app.group.get_group_list()
+    group = Group(header="New header")
+    group.id = old_groups[0].id
+    app.group.modification_first_group(group)
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
+    old_groups[0] = group
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
 
 def test_modification_first_group_footer(app):
-    app.group.modification_first_group(Group(footer="New footer"))
+    app.group.create_group_if_missing()
+    old_groups = app.group.get_group_list()
+    group = Group(footer="New footer")
+    group.id = old_groups[0].id
+    app.group.modification_first_group(group)
+    new_groups = app.group.get_group_list()
+    assert len(old_groups) == len(new_groups)
+    old_groups[0] = group
+    assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)

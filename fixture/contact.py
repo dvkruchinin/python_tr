@@ -39,7 +39,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
-        self.create_contact_if_missing()
+        self.open_contact_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//*[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
@@ -47,7 +47,7 @@ class ContactHelper:
 
     def modification_first_contact(self, contact_new_data):
         wd = self.app.wd
-        self.create_contact_if_missing()
+        self.open_contact_page()
         wd.find_element_by_xpath("//*[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         self.fill_forms(contact_new_data)
         wd.find_element_by_name("update").click()
@@ -71,3 +71,14 @@ class ContactHelper:
     def create_contact_if_missing(self):
         if self.count() == 0:
             self.create(Contact(first_name="test name"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            first_name = element.find_elements_by_tag_name("td")[2].text
+            last_name = element.find_elements_by_tag_name("td")[1].text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(first_name=first_name, last_name=last_name, id=id))
+        return contacts
