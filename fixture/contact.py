@@ -91,7 +91,7 @@ class ContactHelper:
             self.create(Contact(firstname="firstname", lastname="lastname",
                                 homephone="homephone111", mobilephone="mobilephone222",
                                 workphone="workphone333", secondaryphone="secphone444", address="home",
-                                email="name@home.local"))
+                                email="name@home.local", email2="name2@home.local", email3="name3@home.local"))
 
     contact_cache = None
 
