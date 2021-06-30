@@ -6,20 +6,26 @@ import string
 
 
 def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + " "*10
+    symbols = string.ascii_letters + string.digits
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 
 def random_phone():
-    digits = string.digits + " "*10
+    digits = string.digits
     return "".join([random.choice(digits) for i in range(10)])
+
+
+def random_email():
+    symbols = string.ascii_letters + string.digits
+    user_name = mail_server = "".join([random.choice(symbols) for i in range(10)])
+    return "%s@%s" % (user_name, mail_server)
 
 
 testdata = [
     Contact(firstname=random_string("firstname", 5), lastname=random_string("lastname", 5),
                 homephone=random_phone(), mobilephone=random_phone(),
                 workphone=random_phone(), secondaryphone=random_phone(), address=random_string("address", 5),
-                email=random_string("email", 5), email2=random_string("email2", 5), email3=random_string("email3", 5))
+                email=random_email(), email2=random_email(), email3=random_email())
     for i in range(5)
 ]
 
