@@ -7,14 +7,31 @@ Date    : 7/1/2021
 Desc:   
 """
 
-import pymysql
+from fixture.orm import ORMFixture
+from model.group import Group
 
-connection = pymysql.connect(host="localhost", database="addressbook", user="root", password="")
+db = ORMFixture(host="localhost", database="addressbook", user="root", password="")
 
 try:
-    cursor = connection.cursor()
-    cursor.execute("select * from group_list")
-    for row in cursor.fetchall():
-        print(row)
+    groups = db.get_groups_list()
+    contacts = db.get_contacts_list()
+    contacts_in_group = db.get_contacts_in_group(Group(id="248"))
+    contacts_not_in_group = db.get_contacts_not_in_group(Group(id="248"))
+    print("####### Groups")
+    for group in groups:
+        print(group)
+    print(len(groups))
+    print("####### Contacts")
+    for contact in contacts:
+        print(contact)
+    print(len(contacts))
+    print("####### Contacts in group")
+    for contact_in_group in contacts_in_group:
+        print(contact_in_group)
+    print(len(contacts_in_group))
+    print("####### Contacts NOT in group")
+    for contact_not_in_group in contacts_not_in_group:
+        print(contact_not_in_group)
+    print(len(contacts_not_in_group))
 finally:
-    connection.close()
+    pass # db.destroy()
