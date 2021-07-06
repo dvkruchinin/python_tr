@@ -107,7 +107,8 @@ def test_modification_some_contact_phone(app, db, check_ui):
 
 
 def test_modification_some_contact_email(app, db, check_ui):
-    app.contact.create_contact_if_missing()
+    if len(db.get_contact_list()) == 0:
+        app.group.create(Contact(create_contact_if_missing))
     old_contacts = app.contact.get_contact_list()
     index = randrange(len(old_contacts))
     contact = Contact(email="name@newemail.local")
