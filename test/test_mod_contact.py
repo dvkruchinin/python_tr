@@ -18,7 +18,7 @@ create_contact_if_missing = Contact(firstname="firstname", lastname="lastname",
 
 def test_modification_some_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
-        app.group.create(Contact(create_contact_if_missing))
+        app.contact.create(create_contact_if_missing)
     old_contacts = db.get_contact_list()
     index = randrange(len(old_contacts))
     contact = (Contact(firstname="newfname",
@@ -38,7 +38,7 @@ def test_modification_some_contact(app, db, check_ui):
 
 def test_modification_some_contact_first_name(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
-        app.group.create(Contact(create_contact_if_missing))
+        app.contact.create(create_contact_if_missing)
     old_contacts = db.get_contact_list()
     index = randrange(len(old_contacts))
     contact = Contact(firstname="New first name")
@@ -90,7 +90,7 @@ def test_modification_some_contact_address(app, db, check_ui):
 
 def test_modification_some_contact_phone(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
-        app.group.create(Contact(create_contact_if_missing))
+        app.contact.create(create_contact_if_missing)
     old_contacts = db.get_contact_list()
     index = randrange(len(old_contacts))
     contact = Contact(mobilephone="7777777777")
@@ -108,7 +108,7 @@ def test_modification_some_contact_phone(app, db, check_ui):
 
 def test_modification_some_contact_email(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
-        app.group.create(Contact(create_contact_if_missing))
+        app.contact.create(create_contact_if_missing)
     old_contacts = app.contact.get_contact_list()
     index = randrange(len(old_contacts))
     contact = Contact(email="name@newemail.local")

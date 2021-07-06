@@ -9,6 +9,7 @@ Desc:
 
 from model.contact import Contact
 import re
+import random
 
 
 class ContactHelper:
@@ -182,3 +183,23 @@ class ContactHelper:
         secondaryphone = re.search("P: (.*)", text).group(1)
         return Contact(fullname=fullname, address=address, email=email, email2=email2, email3=email3,
                        homephone=homephone, workphone=workphone, mobilephone=mobilephone, secondaryphone=secondaryphone)
+
+    def add_contact_to_group(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_contact_page()
+        self.select_contact_by_id(contact_id)
+        to_group = wd.find_element_by_name("to_group")
+        to_group.find_element_by_css_selector("option[value='%s']" % group_id).click()
+        wd.find_element_by_name("add").click()
+        wd.find_element_by_css_selector("a[href='./?group=%s']" % group_id).click()
+
+    def remove_contact_from_group(self, group_id):
+        wd = self.app.wd
+        self.open_contact_page()
+        group_list = wd.find_element_by_name("group")
+        group_name = group_list.find_element_by_css_selector("option[value='%s']" % group_id).text
+        group_list.find_element_by_css_selector("option[value='%s']" % group_id).click()
+        contacts = wd.find_elements_by_name("selected[]")
+        index = random.randrange(len(contacts))
+        self.select_contact_by_index(index)
+        wd.find_element_by_css_selector("input[value='Remove from \"%s\"']" % group_name).click()
