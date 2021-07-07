@@ -20,16 +20,16 @@ create_group_if_missing = Group(name="test")
 
 
 def test_add_contact_to_group(app, db, orm):
-    contacts = db.get_contact_list()
-    groups = db.get_group_list()
-    contact = random.choice(contacts)
-    group = random.choice(groups)
-
     if len(db.get_group_list()) == 0:
         app.group.create(create_group_if_missing)
 
     if len(db.get_contact_list()) == 0 or len(orm.get_contacts_not_in_group(Group(id=[_id for _id in db.get_group_list()][0].id))) == 0:
         app.contact.create(create_contact_if_missing)
+
+    contacts = db.get_contact_list()
+    groups = db.get_group_list()
+    contact = random.choice(contacts)
+    group = random.choice(groups)
 
     count_contact_in_group = len(orm.get_contacts_in_group(Group(id=group.id)))
     app.contact.add_contact_to_group(contact.id, group.id)
@@ -40,7 +40,7 @@ def test_remove_contact_from_group(app, db, orm):
     if len(db.get_group_list()) == 0:
         app.group.create(create_group_if_missing)
 
-    if len(db.get_contact_list()) == 0 or len(orm.get_contacts_not_in_group(Group(id=[_id for _id in db.get_group_list()][0].id))) == 0:
+    if len(db.get_contact_list()) == 0:
         app.contact.create(create_contact_if_missing)
 
     contacts = db.get_contact_list()
