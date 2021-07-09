@@ -1,0 +1,6 @@
+pytets
+pytest-bdd
+selenium
+jsonpickle
+pony
+pymysql
