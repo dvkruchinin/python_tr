@@ -1,0 +1,128 @@
+{
+  "uid" : "9f897f86ef9b0560",
+  "name" : "test_compare_contact_data_home_page_db",
+  "fullName" : "test.test_compare_contacts#test_compare_contact_data_home_page_db",
+  "historyId" : "65a9e27919bc486417d88cf934db0e9b",
+  "time" : {
+    "start" : 1625841946834,
+    "stop" : 1625841947066,
+    "duration" : 232
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "db",
+    "time" : {
+      "start" : 1625841933001,
+      "stop" : 1625841933008,
+      "duration" : 7
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1625841933001,
+      "stop" : 1625841933001,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1625841946810,
+      "stop" : 1625841946834,
+      "duration" : 24
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1625841958834,
+      "stop" : 1625841958834,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1625841958835,
+      "stop" : 1625841961065,
+      "duration" : 2230
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_compare_contacts"
+  }, {
+    "name" : "host",
+    "value" : "dkruchix-mobl"
+  }, {
+    "name" : "thread",
+    "value" : "22800-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_compare_contacts"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "9f897f86ef9b0560.json",
+  "parameterValues" : [ ]
+}

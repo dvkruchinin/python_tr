@@ -197,9 +197,8 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_page()
         group_list = wd.find_element_by_name("group")
-        group_name = group_list.find_element_by_css_selector("option[value='%s']" % group_id).text
         group_list.find_element_by_css_selector("option[value='%s']" % group_id).click()
         contacts = wd.find_elements_by_name("selected[]")
         index = random.randrange(len(contacts))
         self.select_contact_by_index(index)
-        wd.find_element_by_css_selector("input[value='Remove from \"%s\"']" % group_name).click()
+        wd.find_element_by_name("remove").click()

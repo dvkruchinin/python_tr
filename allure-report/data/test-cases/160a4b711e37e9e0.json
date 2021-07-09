@@ -1,0 +1,104 @@
+{
+  "uid" : "160a4b711e37e9e0",
+  "name" : "test_compare_contact_data_view_edit_page",
+  "fullName" : "test.test_compare_contacts#test_compare_contact_data_view_edit_page",
+  "historyId" : "afeec8a0ba93df34c3891d38fd73c1c5",
+  "time" : {
+    "start" : 1625841947092,
+    "stop" : 1625841948046,
+    "duration" : 954
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert 'firstnamewO lastnamerCMo' == 'firstnameskc lastname98Xz'\n  - firstnameskc lastname98Xz\n  + firstnamewO lastnamerCMo",
+  "statusTrace" : "app = <fixture.application.Application object at 0x00000213484C1910>\n\n    def test_compare_contact_data_view_edit_page(app):\n        app.contact.create_contact_if_missing()\n        old_contacts = app.contact.get_contact_list()\n        index = randrange(len(old_contacts))\n        contact_from_view_page = app.contact.get_contact_info_from_view_page(index)\n        contact_from_edit_page = app.contact.get_contact_info_from_edit_page(index)\n>       assert contact_from_view_page.fullname == \"%s %s\" % (contact_from_edit_page.firstname,\n                                                             contact_from_edit_page.lastname)\nE       AssertionError: assert 'firstnamewO lastnamerCMo' == 'firstnameskc lastname98Xz'\nE         - firstnameskc lastname98Xz\nE         + firstnamewO lastnamerCMo\n\ntest\\test_compare_contacts.py:41: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "stop",
+    "time" : {
+      "start" : 1625841933001,
+      "stop" : 1625841933001,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1625841947069,
+      "stop" : 1625841947091,
+      "duration" : 22
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1625841958835,
+      "stop" : 1625841961065,
+      "duration" : 2230
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "test_compare_contacts"
+  }, {
+    "name" : "host",
+    "value" : "dkruchix-mobl"
+  }, {
+    "name" : "thread",
+    "value" : "22800-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.test_compare_contacts"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "160a4b711e37e9e0.json",
+  "parameterValues" : [ ]
+}

@@ -52,10 +52,9 @@ def test_remove_contact_from_group(app, db, orm):
     contact = random.choice(contacts)
     group = random.choice(groups)
 
-    if len(orm.get_contacts_in_group(Group(id=group.id))) == 0:
+    if contact.id not in orm.get_contacts_in_group(Group(id=group.id)):
         app.contact.add_contact_to_group(contact.id, group.id)
 
     count_contact_in_group = len(orm.get_contacts_in_group(Group(id=group.id)))
     app.contact.remove_contact_from_group(group.id)
     assert len(orm.get_contacts_in_group(Group(id=group.id))) == count_contact_in_group - 1
-
