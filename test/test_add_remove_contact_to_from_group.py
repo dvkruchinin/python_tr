@@ -26,10 +26,14 @@ def test_add_contact_to_group(app, db, orm):
     if len(db.get_contact_list()) == 0 or len(orm.get_contacts_not_in_group(Group(id=[_id for _id in db.get_group_list()][0].id))) == 0:
         app.contact.create(create_contact_if_missing)
 
-    contacts = db.get_contact_list()
     groups = db.get_group_list()
-    contact = random.choice(contacts)
     group = random.choice(groups)
+    contacts = orm.get_contacts_not_in_group(Group(id=group.id))
+    if not contacts:
+        app.contact.create(create_contact_if_missing)
+        contacts = orm.get_contacts_not_in_group(Group(id=group.id))
+
+    contact = random.choice(contacts)
 
     count_contact_in_group = len(orm.get_contacts_in_group(Group(id=group.id)))
     app.contact.add_contact_to_group(contact.id, group.id)
