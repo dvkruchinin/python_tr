@@ -1,8 +1,11 @@
 atomicwrites==1.4.0
 attrs==21.2.0
 colorama==0.4.4
+enum34==1.1.10
 iniconfig==1.1.1
 jsonpickle==2.0.0
+lxml==4.6.3
+namedlist==1.8
 packaging==20.9
 pluggy==0.13.1
 pony==0.7.14
@@ -10,6 +13,8 @@ py==1.10.0
 PyMySQL==1.0.2
 pyparsing==2.4.7
 pytest==6.2.4
+pytest-allure-adaptor==1.7.10
 selenium==3.141.0
+six==1.16.0
 toml==0.10.2
 urllib3==1.26.5
